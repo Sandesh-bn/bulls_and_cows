@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans|Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <div id="player">&#128266;</div>
+    <audio autoplay hidden id="bg-music" loop>
+        <source src="./audio.mp3" type="audio/mpeg">
+        <source src="./audio.ogg" type="audio/mpeg">
+          If you're reading this, audio isn't supported.
+    </audio>
+
+    <div id="wrapper">
+        <div id="intro" class="banner">
+        </div>
+        <div id="rules-banner" class="banner">
+            <p>A random 4 digit number will be generated. Your task is to guess the number. Each time you make a guess, a hint is provided in the form of number of cows and bulls.</p>
+            <img class="rule-image" src="images/cow_thumbnail.png">
+            <p class="rule-text"> Number of digits that matches the digits in random number but located in the wrong position.</p>
+            <br/>
+            <img class="rule-image" src="images/bull_thumbnail.png">
+            <p class="rule-text"> Number of digits that matches in both digit and index.</p>
+            <br/>
+            <h4> Try to guess the number in the least number of attempts.</h4>
+            <button id="rules-next">Next</button>
+        </div>
+
+        <div id="game-banner" class="banner">
+            <p>Attempts: <span id="attempt-count"></span></p>
+            <br/>
+            <p><span id="timer">00:00</span></p>
+            <br/>
+
+            <input id="user-input" maxlength="4" placeholder="Enter 4 unique digits.">
+            <br/>
+            <table class="result">
+                <tr>
+                    <td><img src="images/bull_thumbnail.png">
+                        <p class="count">
+                    </td>
+                    <td id="bull-count">0</td>
+                </tr>
+                <tr>
+                    <td><img src="images/cow_thumbnail.png"></td>
+                    <td id="cow-count">0</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="banner" id="success-banner">
+            <h2>Congratulations !</h2>
+            <p>You guessed the number correctly in <span id="guessCount"></span> attempts!</p>
+            <p>You took <span id="guessTime"></span></p>
+            <button id="restart-btn" onclick=window.location.reload()>Restart</button>
+        </div>
+
+    </div>
+    <script src="javascript/script.js"></script>
+</body>
+
+</html>
