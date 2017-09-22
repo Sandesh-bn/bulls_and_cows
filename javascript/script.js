@@ -6,13 +6,17 @@ window.onload = function () {
 
     // Control the background music.
     const bgMusic = $('bg-music');
-    bgMusic.volume = 0.005;
+    const format1 = $("sound1");
+    const format2 = $("sound2");
+    bgMusic.volume = 0.05;
+    bgMusic.load();
+    bgMusic.play();
     let isMusic = true;
     const player = $('player');
     player.addEventListener('click', () => {
         isMusic = !isMusic;
-        bgMusic.volume = isMusic ? 0.005 : 0;
-        player.innerHTML = isMusic ? '&#128266;' : '&#128263;';
+        bgMusic.volume = isMusic ? 0.05 : 0;
+        player.innerHTML = isMusic ? 'Music on' : 'Music off';
     });
 
     const introBanner = $('intro');
@@ -38,9 +42,17 @@ window.onload = function () {
     let minutes = 0;
     let userInput = '';
 
+    const setProperty = function(element, property, value) {
+        console.log("vendor");
+        element.style["webkit" + property] = value;
+        element.style["moz" + property] = value;
+        element.style["ms" + property] = value;
+        element.style["o" + property] = value;
+    }
     const hideIntro = function () {
         introBanner.style.visibility = 'hidden';
-        rulesBanner.style.transform = 'scale(1) translate(-50%, -50%)';
+        //rulesBanner.style.transform = 'scale(1) translate(-50%, -50%)';
+        setProperty(rulesBanner, 'Transform', 'scale(1) translate(-50%, -50%)');
     };
 
     setTimeout(hideIntro, 3000);
@@ -50,7 +62,8 @@ window.onload = function () {
         rulesNext.style.transition = 'all 0s ease-in-out';
         rulesBanner.style.transition = 'all 0s ease-in-out';
         rulesBanner.style.visibility = 'hidden';
-        gameBanner.style.transform = 'scale(1) translate(-50%, -50%)';
+        //gameBanner.style.transform = 'scale(1) translate(-50%, -50%)';
+        setProperty(gameBanner, 'Transform', 'scale(1) translate(-50%, -50%)');
         startGame();
     });
 
@@ -168,7 +181,7 @@ window.onload = function () {
                         gameBanner.style.visibility = 'hidden';
 
                         guessCountPlaceHolder.textContent = attemptCount;
-                        successBanner.style.transform = 'scale(1) translate(-50%, -50%)';
+                        setProperty(successBanner, 'Transform', 'scale(1) translate(-50%, -50%)');
                     }
                     inputDigits = [];
                     userInput = '';
